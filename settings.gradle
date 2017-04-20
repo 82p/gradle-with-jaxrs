@@ -15,4 +15,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'jquery-sample'
+rootProject.name = 'gradle-with-jxrs'
