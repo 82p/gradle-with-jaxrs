@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  * @author HANIYAMA
  *
  */
-public class BookFactory {
+public class BookFactory implements IBookFactory{
 	private static BookFactory instance = null;
 
 	private List<Book> booklist;
@@ -29,6 +29,7 @@ public class BookFactory {
 		return instance;
 	}
 
+	@Override
 	public Book getById(int id) {
 		if (booklist.size() > id) {
 			return booklist.get(id);
@@ -36,18 +37,32 @@ public class BookFactory {
 		return null;
 	}
 
-	public List<Book> findBookByName(String name){
+	@Override
+	public List<Book> findByName(String name){
 		Pattern p = Pattern.compile(name);
 		return booklist.stream()
 				.filter(book-> p.matcher(book.getName()).find())
 				.collect(Collectors.toList());
 	}
 
+	@Override
 	public void addBook(Book book){
 		booklist.add(book);
 	}
 
+	@Override
 	public List<Book> getList() {
 		return this.booklist;
+	}
+
+	@Override
+	public Book getByIsbn(String isbn) {
+		// TODO 自動生成されたメソッド・スタブ
+		for(Book book:booklist){
+			if(isbn.equals(book.getIsbn())){
+				return book;
+			}
+		}
+		return null;
 	}
 }
