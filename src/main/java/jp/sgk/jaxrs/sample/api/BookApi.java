@@ -12,13 +12,20 @@ import javax.ws.rs.core.MediaType;
 
 import jp.sgk.jaxrs.sample.bean.Book;
 import jp.sgk.jaxrs.sample.bean.BookFactory;
+import jp.sgk.jaxrs.sample.bean.IBookFactory;
 
 @Path("/book")
 public class BookApi {
-	private BookFactory factory;
+	private IBookFactory factory;
+
 	public BookApi() {
 		this.factory = BookFactory.getInstance();
 	}
+
+	public BookApi(IBookFactory factory){
+		this.factory = factory;
+	}
+
 	@GET
 	@Path("id/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -30,7 +37,7 @@ public class BookApi {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Book> getBook(@PathParam("name") String name){
-		return factory.findBookByName(name);
+		return factory.findByName(name);
 	}
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
