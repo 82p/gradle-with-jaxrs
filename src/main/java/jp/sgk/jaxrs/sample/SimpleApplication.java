@@ -23,5 +23,4 @@ public class SimpleApplication extends ResourceConfig{
         //UTF8に変換数フィルターを登録
         this.register(UTF8Filter.class);
     }
-
 }
