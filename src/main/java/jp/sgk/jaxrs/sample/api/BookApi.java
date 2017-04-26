@@ -27,6 +27,12 @@ public class BookApi {
 	}
 
 	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Book> getBookList(){
+		return factory.getList();
+	}
+
+	@GET
 	@Path("id/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Book getBook(@PathParam("id") int id){
@@ -40,8 +46,8 @@ public class BookApi {
 		return factory.findByName(name);
 	}
 	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON+";charset=utf-8")
+	@Produces(MediaType.APPLICATION_JSON+";charset=utf-8")
 	public List<Book> setBook(Book book){
 		factory.addBook(book);
 		return factory.getList();
