@@ -45,11 +45,6 @@ public class BookApi {
 	public List<Book> getBook(@PathParam("name") String name){
 		return factory.findByName(name);
 	}
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Book> getBooks(){
-		return factory.getList();
-	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON+";charset=utf-8")
