@@ -61,11 +61,20 @@ th {
                 $("<td></td>",{"class":"book_center"}).append(button1,button2).appendTo(tr);
                 $("<td></td>",{text:value.name}).appendTo(tr);
                 $("<td></td>",{text:value.publisher}).appendTo(tr);
-                $("<td></td>",{text:value.isbn}).appendTo(tr);            
+                $("<td></td>",{text:value.isbn}).appendTo(tr);
+
+                button1.on("click",function(clicked){
+                    delBook(index);
+                })            
             })
     }
+    
+    function delBook(index){
+        var isDelete = confirm("削除します index:" + index);
+        alert("未実装ｗ");
+    }
 
-    function push(book){
+    function push(book,button){
         return $.ajax({
             type : "POST",
 			url : "./api/book/",
@@ -75,23 +84,42 @@ th {
             scriptCharset: 'utf-8',
 			timeout : 10000
         }).done(function(data){
-            console.log("ok")
+            render(data);
         }).fail(err => {
             console.log("miss");
             console.log(err);
+        }).always(function(){
+            button.disabled = false;
         });
     }
 
-    update();
+    function addNewBook(clicked){
+        var button;
+        if(clicked && clicked.target){
+            button = clicked.target;
+            button.disabled = true;
+        }
+        var book = {
+            name:$("#book_title").val(),
+            publisher:$("#book_publisher").val(),
+            isbn:$("#book_isbn").val()
+        }
+        push(book,button);
+    }
+    var button;
+    $(document).ready(()=>{
+        $("#action_add").on("click",function(clicked){
+            addNewBook(clicked);   
+        });
+        update();
+    })
 
 </script>
 </head>
 <body>
 	<h1>Hello JAX-RS</h1>
-	<p><a href="./api/book/0">api</a></p>
     <p><a href="./api/book/">books</a></p>
-    <button>a</button>
-    <button>a</button>
+
     <table>
         <thead>
 			<tr>
@@ -103,10 +131,10 @@ th {
 		</thead>
         <tbody>
             <tr>
-                <td class="book_center"><button id="push">新規登録</button></td>                
-                <td><input type="text"/></td>
-                <td><input type="text" /></td>
-                <td><input type="text" /></td>
+                <td class="book_center"><button id="action_add">新規登録</button></td>                
+                <td><input id="book_title" type="text"/></td>
+                <td><input id="book_publisher" type="text" /></td>
+                <td><input id="book_isbn" type="text" /></td>
             </tr>
         </tbody>
     </table>
