@@ -3,6 +3,7 @@ package jp.sgk.jaxrs.sample.api;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -38,6 +39,15 @@ public class BookApi {
 	public Book getBook(@PathParam("id") int id){
 		return factory.getById(id);
 	}
+
+	@DELETE
+	@Path("id/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Book> deleteBook(@PathParam("id") int id){
+		factory.deleteById(id);
+		return factory.getList();
+	}
+
 	@GET
 	@Path("name/{name}")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -47,8 +57,8 @@ public class BookApi {
 	}
 
 	@POST
-	@Consumes(MediaType.APPLICATION_JSON+";charset=utf-8")
-	@Produces(MediaType.APPLICATION_JSON+";charset=utf-8")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public List<Book> setBook(Book book){
 		factory.addBook(book);
 		return factory.getList();

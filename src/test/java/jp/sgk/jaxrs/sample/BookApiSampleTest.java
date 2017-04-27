@@ -77,5 +77,13 @@ public class BookApiSampleTest extends JerseyTest {
 		assertThat("200 OK", res.getStatusInfo().getStatusCode(), is(200));
 		assertThat("response", res.readEntity(String.class), is(
 				"[{\"name\":\"数の悪魔\",\"isbn\":\"978-4794964540\",\"publisher\":\"晶文社\"},{\"name\":\"マッキンゼ―流 最高の社風の作り方\",\"isbn\":\"978-4-8222-5166-6\",\"publisher\":\"日経BP社\"}]"));
+
+		 WebTarget deltarget = target("book/id/0");
+		 Response res2 = deltarget.request().delete();
+
+		 assertThat("200 OK", res2.getStatusInfo().getStatusCode(), is(200));
+		 assertThat("response", res2.readEntity(String.class), is(
+		 		"[{\"name\":\"マッキンゼ―流 最高の社風の作り方\",\"isbn\":\"978-4-8222-5166-6\",\"publisher\":\"日経BP社\"}]"));
+
 	}
 }

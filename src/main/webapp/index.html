@@ -71,7 +71,20 @@ th {
     
     function delBook(index){
         var isDelete = confirm("削除します index:" + index);
-        alert("未実装ｗ");
+        if(isDelete){
+            $.ajax({
+                type : "DELETE",
+                url : "./api/book/id/" + index ,
+                dataType : "json",
+                timeout : 10000
+            }).done(function(data){
+                render(data);
+            }).fail(err => {
+                console.log("miss");
+                console.log(err);
+            }).always(function(){
+            });;
+        }
     }
 
     function push(book,button){
@@ -106,7 +119,7 @@ th {
         }
         push(book,button);
     }
-    var button;
+
     $(document).ready(()=>{
         $("#action_add").on("click",function(clicked){
             addNewBook(clicked);   

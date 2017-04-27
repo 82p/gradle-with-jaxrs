@@ -65,4 +65,9 @@ public class BookFactory implements IBookFactory{
 		}
 		return null;
 	}
+
+	@Override
+	public void deleteById(int id) {
+		booklist.remove(id);
+	}
 }

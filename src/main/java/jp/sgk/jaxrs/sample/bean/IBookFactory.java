@@ -8,4 +8,5 @@ public interface IBookFactory {
 	public void addBook(Book book);
 	public List<Book> findByName(String name);
 	public List<Book> getList();
+	public void deleteById(int id);
 }
