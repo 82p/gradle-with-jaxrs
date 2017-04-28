@@ -3,8 +3,8 @@
 JAX-RSの実装である jersey による REST API の実装と、
 ついでに Gradle と Eclipse で開発デバッグするサンプルです。
 
-札幌の新人に ajax を教えるために手ごろな mock サーバー作ろうとしたのですが、    
-node じゃ node インストールしないといけないし、ちょうど JavaでRESTやってるらしいし、   
+札幌の新人に ajax を教えるために手ごろな mock サーバー作ろうとしたのですが、
+node じゃ node インストールしないといけないし、ちょうど JavaでRESTやってるらしいし、
 gradle なら Eclipseさえあれば動くしソースも見れるということで作成しました。
 
 Gradleのサンプルにちょうど良いと思ったので適当にテストを書いて公開します。
@@ -34,7 +34,7 @@ Gradleタスクウィンドウが開かれると思うので、
 
 しばらくしたらTomcatが起動するので、
 
-http://localhost:8080/
+http://localhost:8080/gradle-with-jaxrs/
 
 にアクセスします。
 
@@ -56,7 +56,7 @@ Gradleタスクの標準出力は、コンソールに出力されます。
 ## ポイント
 
 ### ソースの読むべきところ
-ソースの読み方として、読み始める場所は `web.xml`です。   
+ソースの読み方として、読み始める場所は `web.xml`です。
 src/main/webapp 以下がGradleにおける WebContents の置き場所です。
 
 ```xml
@@ -105,7 +105,7 @@ public class SimpleApplication extends ResourceConfig{
 中身は読めばなんとなくわかると思います。
 
 ### Tomcat
-Tomcatを動かしているのは `getty` プラグインというプラグインです。        
+Tomcatを動かしているのは `getty` プラグインというプラグインです。
 Eclipseのデバッグと連携するには、 `tomcatRunDebug` タスクを実行すると、
 デフォルトで5005ポートでリモートデバッグを待ち受けるので、Eclipseのデバッグで接続します。
 

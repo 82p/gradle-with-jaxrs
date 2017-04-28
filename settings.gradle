@@ -15,4 +15,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'gradle-with-jxrs'
+rootProject.name = 'gradle-with-jaxrs'
