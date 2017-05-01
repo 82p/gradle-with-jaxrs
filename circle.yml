@@ -1,0 +1,10 @@
+machine:
+  java:
+    version: oraclejdk8
+  timezone: Asia/Tokyo
+dependencies:
+  cache_directories:
+    - /cache/.gradle
+test:
+  override:
+    - ./gradlew -g /cache/.gradle check
