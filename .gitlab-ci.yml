@@ -18,7 +18,6 @@ variables:
 # It is expected that any modern gradle project has a wrapper
 before_script:
     - chmod +x gradlew
-    - ls -l /cache/.gradle
 # We redirect the gradle user home using -g so that it caches the
 # wrapper and dependencies.
 # https://docs.gradle.org/current/userguide/gradle_command_line.html
