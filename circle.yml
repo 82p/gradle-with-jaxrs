@@ -1,3 +1,6 @@
+checkout:
+  post:
+    - chmod +x ./gradlew
 machine:
   java:
     version: oraclejdk8
