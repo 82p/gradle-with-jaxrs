@@ -7,7 +7,7 @@ machine:
   timezone: Asia/Tokyo
 dependencies:
   override:
-    - sudo mkdir -p /cache/.gradle
+    - sudo mkdir -p -m +w /cache/.gradle
     - sudo chown -R ubuntu /cache/.gradle
   cache_directories:
     - /cache/.gradle
