@@ -8,6 +8,7 @@ machine:
 dependencies:
   override:
     - sudo mkdir -p /cache/.gradle
+    - sudo chown -R ubuntu /cache/.gradle
   cache_directories:
     - /cache/.gradle
 test:
