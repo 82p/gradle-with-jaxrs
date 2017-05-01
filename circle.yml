@@ -6,6 +6,8 @@ machine:
     version: oraclejdk8
   timezone: Asia/Tokyo
 dependencies:
+  override:
+    - sudo mkdir -p /cache/.gradle
   cache_directories:
     - /cache/.gradle
 test:
