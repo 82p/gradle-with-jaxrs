@@ -5,12 +5,6 @@ machine:
   java:
     version: oraclejdk8
   timezone: Asia/Tokyo
-dependencies:
-  override:
-    - sudo mkdir -p -m +w /cache/.gradle
-    - sudo chown -R ubuntu /cache/.gradle
-  cache_directories:
-    - /cache/.gradle
 test:
   override:
-    - ./gradlew -g /cache/.gradle check
+    - ./gradlew check
