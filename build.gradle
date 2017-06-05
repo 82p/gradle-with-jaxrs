@@ -35,11 +35,10 @@ buildscript {
 }
 
 dependencies {
-    compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet-core', version:'2.+'
-    compile group: 'org.glassfish.jersey.media', name: 'jersey-media-moxy', version:'2.+'
-    compile group:'com.fasterxml.jackson.core', name:'jackson-databind', version:'2.+'
-    compile group:'org.glassfish.jersey.media', name:'jersey-media-json-jackson', version:'2.+'
-    testImplementation group:'org.glassfish.jersey.test-framework.providers', name: 'jersey-test-framework-provider-grizzly2', version:'2.+'
+    compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet-core', version:'2.26-b03'
+    compile group: 'org.glassfish.jersey.media', name: 'jersey-media-moxy', version:'2.26-b03'
+    compile group:'com.fasterxml.jackson.core', name:'jackson-databind', version:'2.8.4'
+    testImplementation group:'org.glassfish.jersey.test-framework.providers', name: 'jersey-test-framework-provider-grizzly2', version:'2.26-b03'
     testImplementation group: 'junit', name: 'junit', version:'4.12'
 }
 
