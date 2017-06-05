@@ -13,6 +13,7 @@ apply plugin: 'eclipse'
 apply plugin: 'eclipse-wtp'
 apply plugin: 'org.akhikhl.gretty'
 apply plugin: 'findbugs'
+apply plugin: 'checkstyle'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -28,10 +29,17 @@ findbugs{
 }
 tasks.withType(FindBugs) {
     reports {
-        xml.enabled = true
+        xml.enabled = false
         html.enabled = true
     }
- }
+}
+
+//checkstyle settings
+checkstyle{
+    toolVersion '7.6'
+	//mainのみチェック(test は除外）
+	sourceSets = [project.sourceSets.main]
+}
 
 repositories {
      jcenter()
