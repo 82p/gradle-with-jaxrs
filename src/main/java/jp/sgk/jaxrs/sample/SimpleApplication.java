@@ -14,6 +14,9 @@ import jp.sgk.jaxrs.sample.filter.UTF8Filter;
  *
  */
 public class SimpleApplication extends ResourceConfig{
+    /**
+     * デフォルトコンストラクタ
+     */
     public SimpleApplication() {
     	//読み込むAPIソースパッケージ
         packages("jp.sgk.jaxrs.sample.api");

@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  * @author HANIYAMA
  *
  */
-public class BookFactory implements IBookFactory{
+public final class BookFactory implements IBookFactory{
 	private static BookFactory instance = null;
 
 	private List<Book> booklist;
@@ -22,6 +22,10 @@ public class BookFactory implements IBookFactory{
 		booklist.add(new Book("数の悪魔", "978-4794964540", "晶文社"));
 	}
 
+	/**
+	 * インスタンスを取得
+	 * @return BookFactory
+	 */
 	public static BookFactory getInstance() {
 		if(instance == null){
 			instance = new BookFactory();
