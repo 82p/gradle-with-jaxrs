@@ -37,6 +37,9 @@ public class BookApi {
 	 * @param factory {@link IBookFactory}
 	 */
 	public BookApi(IBookFactory factory){
+		if(factory == null){
+			throw new IllegalArgumentException();
+		}
 		this.factory = factory;
 	}
 
