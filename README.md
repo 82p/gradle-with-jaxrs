@@ -9,8 +9,6 @@ gradle なら Eclipseさえあれば動くしソースも見れるというこ�
 
 Gradleのサンプルにちょうど良いと思ったので適当にテストを書いて公開します。
 
-結局サーバー立てて設定するので半日つぶれて ajax のサンプルは書けてないです（本末転倒）。
-
 ## 使い方
 
 ### Eclipseで動かす
@@ -38,10 +36,10 @@ http://localhost:8080/gradle-with-jaxrs/
 
 にアクセスします。
 
-Gradleタスクの標準出力は、コンソールに出力されます。
-コンソールで何かボタンを押すことでもサーバーを止めることが出来ます。
+Gradleタスクの標準出力は、コンソールに出力されます。  
+コンソールで何かボタンを押すことでもサーバーを止めることが出来ます。  
 
-うまく動かない場合は eclipse タスクを実行して、必要ファイルを作成後、プロジェクトをリフレッシュしてください。
+うまく動かない場合は eclipse タスクを実行して、必要ファイルを作成後、プロジェクトをリフレッシュしてください。     
 （自動で出来ると思ってるんだけど違うかも）
 
 ### コマンドを直接叩く
@@ -56,7 +54,7 @@ Gradleタスクの標準出力は、コンソールに出力されます。
 ## ポイント
 
 ### ソースの読むべきところ
-ソースの読み方として、読み始める場所は `web.xml`です。
+ソースの読み方として、読み始める場所は [web.xml](./src/main/webapp/WEB-INF/web.xml) です。
 src/main/webapp 以下がGradleにおける WebContents の置き場所です。
 
 ```xml
@@ -78,6 +76,7 @@ src/main/webapp 以下がGradleにおける WebContents の置き場所です。
 
 細かい設定はこのSimpleApplicationクラスで行っています。
 
+[SimpleApplication.java](./src/main/java/jp/sgk/jaxrs/sample/SimpleApplication.java)
 ```java
 /**
  *
@@ -114,15 +113,15 @@ Eclipseのデバッグと連携するには、 `tomcatRunDebug` タスクを実�
 
 ### 依存関係
 
-依存関係はこんな感じです。
+依存関係はこんな感じです。  
+jersey の最新版にバグがあったためバージョンを固定しました。
 
 ```groovy:build.gradle
 dependencies {
-    compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet-core', version:'2.+'
-    compile group: 'org.glassfish.jersey.media', name: 'jersey-media-moxy', version:'2.+'
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.+'
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.+'
-    testImplementation group:'org.glassfish.jersey.test-framework.providers', name: 'jersey-test-framework-provider-grizzly2', version:'2.+'
+    compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet-core', version:'2.26-b03'
+    compile group: 'org.glassfish.jersey.media', name: 'jersey-media-moxy', version:'2.26-b03'
+    compile group:'com.fasterxml.jackson.core', name:'jackson-databind', version:'2.8.4'
+    testImplementation group:'org.glassfish.jersey.test-framework.providers', name: 'jersey-test-framework-provider-grizzly2', version:'2.26-b03'
     testImplementation group: 'junit', name: 'junit', version:'4.12'
 }
 ```
