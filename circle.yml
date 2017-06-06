@@ -1,0 +1,22 @@
+general:
+  artifacts:
+    - "build/reports/"
+    - "/home/ubuntu/.gradle"
+checkout:
+  post:
+    - chmod +x ./gradlew
+machine:
+  java:
+    version: oraclejdk8
+  timezone: Asia/Tokyo
+  post:
+    - sudo service postgresql stop
+dependencies:
+  cache_directories:
+    - ~/.gradle
+  override:
+    - mkdir -p ~/.gradle
+    - ./gradlew testClasses    
+test:
+  override:
+    - ./gradlew test --stacktrace
