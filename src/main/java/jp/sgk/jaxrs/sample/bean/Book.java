@@ -18,11 +18,21 @@ public class Book {
 	private String isbn;
 	private String publisher;
 
+	/**
+	 * コンストラクタ
+	 *
+	 * @param name 書名
+	 * @param isbn isbn
+	 * @param publicsher 出版社
+	 */
 	public Book(String name, String isbn, String publicsher) {
 		this.name = name;
 		this.isbn = isbn;
 		this.publisher = publicsher;
 	}
+	/**
+	 * デフォルトコンストラクタ
+	 */
 	public Book(){
 
 	}
@@ -99,28 +109,36 @@ public class Book {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj){
 			return true;
-		if (obj == null)
+		}
+		if (obj == null){
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()){
 			return false;
+		}
 		Book other = (Book) obj;
 		if (isbn == null) {
-			if (other.isbn != null)
+			if (other.isbn != null){
 				return false;
-		} else if (!isbn.equals(other.isbn))
+			}
+		} else if (!isbn.equals(other.isbn)){
 			return false;
-		if (name == null) {
-			if (other.name != null)
+		}
+		if (name == null){
+			if (other.name != null){
 				return false;
-		} else if (!name.equals(other.name))
+			}
+		} else if (!name.equals(other.name)){
 			return false;
+		}
 		if (publisher == null) {
-			if (other.publisher != null)
+			if (other.publisher != null){
 				return false;
-		} else if (!publisher.equals(other.publisher))
+			}
+		} else if (!publisher.equals(other.publisher)){
 			return false;
+		}
 		return true;
-	}
-}
+	}}
