@@ -23,7 +23,7 @@ public class SimpleApplication extends ResourceConfig{
         //JSON変換クラスの登録
         this.register(MoxyFilteringFeature.class);
         //this.register(JacksonFeature.class);
-        //UTF8に変換数フィルターを登録
+        //UTF8に変換するフィルターを登録
         this.register(UTF8Filter.class);
     }
 }
