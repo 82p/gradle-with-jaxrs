@@ -1,7 +1,6 @@
 general:
   artifacts:
     - "build/reports/"
-    - "/home/ubuntu/.gradle"
 checkout:
   post:
     - chmod +x ./gradlew
@@ -23,4 +22,6 @@ dependencies:
     - ./gradlew testClasses    
 test:
   override:
-    - ./gradlew test --stacktrace
+    - ./gradlew check --stacktrace
+  post:
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit/ && find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
