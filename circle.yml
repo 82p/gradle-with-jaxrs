@@ -11,6 +11,10 @@ machine:
   timezone: Asia/Tokyo
   post:
     - sudo service postgresql stop
+    - sudo service mysql stop
+  environment:
+    _JAVA_OPTIONS: "-Xms512m -Xmx1024m"
+    GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"'
 dependencies:
   cache_directories:
     - ~/.gradle
