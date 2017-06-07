@@ -1,0 +1,10 @@
+checkout:
+  post:
+    - chmod +x ./gradlew
+machine:
+  java:
+    version: oraclejdk8
+  timezone: Asia/Tokyo
+test:
+  override:
+    - ./gradlew check
