@@ -17,8 +17,7 @@ dependencies:
   cache_directories:
     - ~/.gradle
   override:
-    - mkdir -p ~/.gradle
-    - ./gradlew testClasses
+    - ./gradlew testClasses --info
 test:
   override:
     - ./gradlew check --stacktrace --info
