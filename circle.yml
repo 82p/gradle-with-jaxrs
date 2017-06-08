@@ -17,9 +17,11 @@ dependencies:
   cache_directories:
     - ~/.gradle
   override:
+    - ./gradlew daemon --status
     - ./gradlew testClasses --info
 test:
   override:
+    - ./gradlew daemon --status
     - ./gradlew check --stacktrace --info
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
